@@ -45,10 +45,10 @@ public class MovieDetails extends AppCompatActivity {
         setContentView(R.layout.activity_movie_details);
 
 
-init();
+        init();
 
 
-setUpData();
+        setUpData();
 
         setupRecyclerView();
 

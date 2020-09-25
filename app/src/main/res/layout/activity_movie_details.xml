@@ -50,7 +50,8 @@
                         android:id="@+id/tv_rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:layout_marginTop="15dp"
+                        android:textSize="16sp"
                         android:textColor="@android:color/black"/>
                 </LinearLayout>
 
@@ -62,7 +63,7 @@
                 android:id="@+id/tv_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textColor="@android:color/black"
                 android:padding="10dp"/>
 

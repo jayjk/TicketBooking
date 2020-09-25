@@ -15,7 +15,9 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AbsListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.test.ticketbooking.adapter.MovieListAdapter;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     int currentItem,totalItems,scrollItems, pageNumber = 1;
     private SearchView searchView;
 
+    ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         rv_movie = findViewById(R.id.rv_movie);
 
         dialog = new ProgressDialog(MainActivity.this);
+
+        pb = findViewById(R.id.pb);
     }
 
 
@@ -103,12 +108,16 @@ public class MainActivity extends AppCompatActivity {
                     pageNumber = pageNumber+1;
                     isScrolling = false;
                     if (pageNumber<4){
+                        pb.setVisibility(View.VISIBLE);
                         mMainActivityViewModel.getMasterData(pageNumber).observe(MainActivity.this, new Observer<List<MasterData>>() {
                             @Override
                             public void onChanged(@Nullable List<MasterData> data) {
+
+                                pb.setVisibility(View.GONE);
+
                                 if (data!=null){
                                     masterList.addAll(data);
-                                    searchList.addAll(masterList);
+                                    searchList.addAll(data);
                                 }
 
                                 else
@@ -127,6 +136,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void fetchData() {
+
+        pb.setVisibility(View.GONE);
+
         dialog.setMessage("Fetching Movies");
         dialog.show();
 
@@ -137,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(@Nullable List<MasterData> data) {
                 dialog.dismiss();
                 masterList.addAll(data);
-                searchList.addAll(masterList);
+                searchList.addAll(data);
                 movieListAdapter.notifyDataSetChanged();
 
             }
@@ -170,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if (!newText.contains(" ")){
                         for (int i = 0; i < masterList.size(); i++) {
-                            if (masterList.get(i).getOriginal_title().matches("^(.*?(?i)(\\b"+newText+"\\w{0})[^$]*)$")){
+                            if (masterList.get(i).getTitle().matches("^(.*?(?i)(\\b"+newText+"\\w{0})[^$]*)$")){
                                 searchList.add(masterList.get(i));
                             }
                         }
@@ -189,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                         for (int i = 0; i < masterList.size(); i++) {
-                            if (masterList.get(i).getOriginal_title().matches("^(.*?(?i)("+newExp+")[^$]*)$")){
+                            if (masterList.get(i).getTitle().matches("^(.*?(?i)("+newExp+")[^$]*)$")){
                                 searchList.add(masterList.get(i));
                             }
                         }

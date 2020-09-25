@@ -52,7 +52,7 @@
                 <TextView
                     android:id="@+id/tv_date"
                     android:layout_width="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:layout_margin="5sp"
                     android:textColor="@android:color/black"
                     android:layout_height="wrap_content" />
@@ -61,7 +61,10 @@
                     android:id="@+id/btn_book"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/book"/>
+                    android:text="@string/book"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/rounded_button"/>
 
             </LinearLayout>
 
