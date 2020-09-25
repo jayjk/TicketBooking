@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,6 +43,12 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Cand
     public void onBindViewHolder(@NonNull MovieListAdapter.CandidateViewHolder holder, final int position) {
         holder.tv_title.setText(movieData.get(position).getTitle());
         holder.tv_date.setText("Release Date: "+movieData.get(position).getRelease_date());
+        holder.btn_book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context,"Coming Soon",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         RequestOptions rq = new RequestOptions().placeholder(android.R.drawable.stat_sys_download);
 
@@ -81,6 +89,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Cand
 
         TextView tv_title,tv_date;
         ImageView iv_img;
+        Button btn_book;
         View view;
 
         public CandidateViewHolder(@NonNull View itemView) {
@@ -89,6 +98,9 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Cand
             tv_title = itemView.findViewById(R.id.tv_title);
             iv_img = itemView.findViewById(R.id.iv_img);
             tv_date =  itemView.findViewById(R.id.tv_date);
+
+            btn_book = itemView.findViewById(R.id.btn_book);
+
             view = itemView;
 
         }
