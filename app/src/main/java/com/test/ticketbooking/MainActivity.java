@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
 
                                 else
-                                    Toast.makeText(MainActivity.this,"Search Failed. Try Again",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this,getResources().getString(R.string.search_text_error),Toast.LENGTH_SHORT).show();
 
                                 movieListAdapter.notifyDataSetChanged();
                             }
@@ -164,7 +164,8 @@ public class MainActivity extends AppCompatActivity {
         MenuItem searchViewMenuItem = m.findItem(R.id.search);
         searchView = (SearchView) searchViewMenuItem.getActionView();
 
-        searchView.setQueryHint("Enter Movie Title");
+        searchView.setQueryHint(getResources().getString(R.string.search_hint));
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

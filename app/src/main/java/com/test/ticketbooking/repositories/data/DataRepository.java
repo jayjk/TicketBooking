@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.test.ticketbooking.R;
 import com.test.ticketbooking.models.MasterData;
 import com.test.ticketbooking.models.Results;
 import com.test.ticketbooking.repositories.database.DatabaseClient;
@@ -46,7 +47,7 @@ public class DataRepository {
 
         try {
 
-            api.getData("88c140df981aacb7e833619c736da88e","en-US",String.valueOf(pageNumber))
+            api.getData(context.getResources().getString(R.string.api_key),"en-US",String.valueOf(pageNumber))
                     .enqueue(new Callback<Results>() {
 
                                  @Override
@@ -120,7 +121,7 @@ public class DataRepository {
 
         try {
 
-            api.getSimilarData(movieID,"88c140df981aacb7e833619c736da88e","en-US","1")
+            api.getSimilarData(movieID,context.getResources().getString(R.string.api_key),"en-US","1")
                     .enqueue(new Callback<Results>() {
 
                                  @Override

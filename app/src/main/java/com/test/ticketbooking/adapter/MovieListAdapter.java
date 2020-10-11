@@ -46,7 +46,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Cand
         holder.btn_book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"Coming Soon",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,context.getResources().getString(R.string.coming_soon),Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -58,7 +58,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Cand
 
             Glide.with(context)
                     .load(url)
-                    .override(500, 600)
+                    .override(300, 400)
                     .apply(rq)
                     .into(holder.iv_img);
         }
